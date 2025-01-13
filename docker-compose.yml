@@ -1,0 +1,38 @@
+services:
+# container php
+  php:
+    build:
+      context: .
+    image: php:8.3-fpm
+    container_name: php-docker
+    ports:
+      - "9000:9000"
+    volumes:
+      - ".:/var/www/html/"
+    command: php -S 0.0.0.0:9000 -t public/
+    links:
+      - mariadb
+# container mariadb
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb-docker
+    ports:
+      - "3309:3306"
+    volumes:
+      - mariadb:/var/lib/mysql/
+    environment:
+      MYSQL_DATABASE: 'php'
+      MYSQL_USER: 'root'
+      MYSQL_PASSWORD: 'toor'
+      MYSQL_ROOT_PASSWORD: 'toor'
+# container composer
+  composer: 
+    image: composer:latest
+    container_name: composer-docker
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    entrypoint: ["composer"]
+# volumes
+volumes:
+  mariadb:
