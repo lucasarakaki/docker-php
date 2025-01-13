@@ -1,0 +1,18 @@
+{
+    "name": "lucastakeshi/docker-php",
+    "description": "Simples ambinete de desenvolvimento com PHP, MariaDB e Composer com Docker.",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Lucas Takeshi Arakaki",
+            "email": "takeshioficial01@gmail.com"
+        }
+    ],
+    "require": {}
+}
