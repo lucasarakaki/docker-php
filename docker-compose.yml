@@ -3,7 +3,7 @@ services:
   php:
     build:
       context: .
-    image: php:8.3-fpm
+    image: php-image
     container_name: php-docker
     ports:
       - "9000:9000"
